@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.kaigekeji.zhinengshibie.dao.OsGuanLiYuanMapper">
+    <resultMap id="BaseResultMap" type="com.kaigekeji.zhinengshibie.dao.entity.OsGuanLiYuan">
+        <id column="bianhao" jdbcType="VARCHAR" property="bianHao"/>
+        <result column="yonghuming" jdbcType="VARCHAR" property="yongHuMing"/>
+        <result column="mima" jdbcType="VARCHAR" property="miMa"/>
+    </resultMap>
+    <sql id="Base_Column_List">
+    bianhao, yonghuming, mima
+  </sql>
+    <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+        SELECT
+        <include refid="Base_Column_List"/>
+        FROM os_guanliyuan
+        WHERE bianhao = #{bianHao,jdbcType=VARCHAR}
+    </select>
+
+    <insert id="insertSelective" parameterType="com.kaigekeji.zhinengshibie.dao.entity.OsGuanLiYuan">
+        INSERT INTO os_guanliyuan
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="bianHao != null">
+                bianhao,
+            </if>
+            <if test="yongHuMing != null">
+                yonghuming,
+            </if>
+            <if test="miMa != null">
+                mima,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="bianHao != null">
+                #{bianHao,jdbcType=VARCHAR},
+            </if>
+            <if test="yongHuMing != null">
+                #{yongHuMing,jdbcType=VARCHAR},
+            </if>
+            <if test="miMa != null">
+                #{miMa,jdbcType=VARCHAR},
+            </if>
+        </trim>
+    </insert>
+    <update id="updateByPrimaryKeySelective" parameterType="com.kaigekeji.zhinengshibie.dao.entity.OsGuanLiYuan">
+        UPDATE os_guanliyuan
+        <set>
+            <if test="yongHuMing != null">
+                yonghuming = #{yongHuMing,jdbcType=VARCHAR},
+            </if>
+            <if test="miMa != null">
+                mima = #{miMa,jdbcType=VARCHAR},
+            </if>
+        </set>
+        WHERE bianhao = #{bianHao,jdbcType=VARCHAR}
+    </update>
+
+</mapper>

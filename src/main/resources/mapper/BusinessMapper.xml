@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.kaigekeji.zhinengshibie.dao.BusinessMapper">
+    <resultMap id="BaseResultMap" type="com.kaigekeji.zhinengshibie.dao.entity.Business">
+        <id column="sid" jdbcType="INTEGER" property="sId"/>
+        <result column="sname" jdbcType="VARCHAR" property="sName"/>
+        <result column="jc" jdbcType="VARCHAR" property="jc"/>
+        <result column="type" jdbcType="VARCHAR" property="type"/>
+        <result column="tid" jdbcType="VARCHAR" property="tId"/>
+        <result column="dikouxiaoshi" jdbcType="VARCHAR" property="diKouXiaoShi"/>
+
+        <result column="ticket" jdbcType="INTEGER" property="ticket"/>
+        <result column="count" jdbcType="INTEGER" property="count"/>
+        <result column="countType" jdbcType="INTEGER" property="countType"/>
+        <result column="addDate" jdbcType="VARCHAR" property="addDate"/>
+        <result column="endDate" jdbcType="VARCHAR" property="endDate"/>
+        <result column="state" jdbcType="INTEGER" property="state"/>
+    </resultMap>
+    <sql id="Base_Column_List">
+    sid, sname, jc, type, tid, dikouxiaoshi,ticket, count, counttype, adddate, enddate, state
+  </sql>
+    <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+        SELECT
+        <include refid="Base_Column_List"/>
+        FROM kg_business
+        WHERE sid = #{sid,jdbcType=INTEGER}
+    </select>
+
+
+    <insert id="insertSelective" parameterType="com.kaigekeji.zhinengshibie.dao.entity.Business">
+        INSERT INTO kg_business
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="sId != null">
+                sid,
+            </if>
+            <if test="sName != null">
+                sname,
+            </if>
+            <if test="jc != null">
+                jc,
+            </if>
+            <if test="type != null">
+                type,
+            </if>
+            <if test="tId != null">
+                tid,
+            </if>
+            <if test="diKouXiaoShi != null">
+                dikouxiaoshi,
+            </if>
+
+            <if test="ticket != null">
+                ticket,
+            </if>
+            <if test="count != null">
+                count,
+            </if>
+            <if test="countType != null">
+                counttype,
+            </if>
+            <if test="addDate != null">
+                adddate,
+            </if>
+            <if test="endDate != null">
+                enddate,
+            </if>
+            <if test="state != null">
+                state,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="sId != null">
+                #{sId,jdbcType=INTEGER},
+            </if>
+            <if test="sName != null">
+                #{sName,jdbcType=VARCHAR},
+            </if>
+            <if test="jc != null">
+                #{jc,jdbcType=VARCHAR},
+            </if>
+            <if test="type != null">
+                #{type,jdbcType=VARCHAR},
+            </if>
+            <if test="tId != null">
+                #{tId,jdbcType=VARCHAR},
+            </if>
+            <if test="diKouXiaoShi != null">
+                #{diKouXiaoShi,jdbcType=VARCHAR},
+            </if>
+
+            <if test="ticket != null">
+                #{ticket,jdbcType=INTEGER},
+            </if>
+            <if test="count != null">
+                #{count,jdbcType=INTEGER},
+            </if>
+            <if test="countType != null">
+                #{countType,jdbcType=INTEGER},
+            </if>
+            <if test="addDate != null">
+                #{addDate,jdbcType=VARCHAR},
+            </if>
+            <if test="endDate != null">
+                #{endDate,jdbcType=VARCHAR},
+            </if>
+            <if test="state != null">
+                #{state,jdbcType=INTEGER},
+            </if>
+        </trim>
+    </insert>
+    <update id="updateByPrimaryKeySelective" parameterType="com.kaigekeji.zhinengshibie.dao.entity.Business">
+        UPDATE kg_business
+        <set>
+            <if test="sName != null">
+                sname = #{sName,jdbcType=VARCHAR},
+            </if>
+            <if test="jc != null">
+                jc = #{jc,jdbcType=VARCHAR},
+            </if>
+            <if test="type != null">
+                type = #{type,jdbcType=VARCHAR},
+            </if>
+            <if test="tId != null">
+                tid = #{tId,jdbcType=VARCHAR},
+            </if>
+
+            <if test="diKouXiaoShi != null">
+                dikouxiaoshi = #{diKouXiaoShi,jdbcType=VARCHAR},
+            </if>
+            <if test="ticket != null">
+                ticket = #{ticket,jdbcType=INTEGER},
+            </if>
+            <if test="count != null">
+                count = #{count,jdbcType=INTEGER},
+            </if>
+            <if test="countType != null">
+                counttype = #{countType,jdbcType=INTEGER},
+            </if>
+            <if test="addDate != null">
+                adddate = #{addDate,jdbcType=VARCHAR},
+            </if>
+            <if test="endDate != null">
+                enddate = #{endDate,jdbcType=VARCHAR},
+            </if>
+            <if test="state != null">
+                state = #{state,jdbcType=INTEGER},
+            </if>
+        </set>
+        WHERE sid = #{sId,jdbcType=INTEGER}
+    </update>
+</mapper>

@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.kaigekeji.zhinengshibie.dao.OsXiaoPiaoMapper">
+    <resultMap id="BaseResultMap" type="com.kaigekeji.zhinengshibie.dao.entity.OsXiaoPiao">
+        <id column="bianhao" jdbcType="VARCHAR" property="bianHao"/>
+        <result column="chepai" jdbcType="VARCHAR" property="chePai"/>
+        <result column="yonghubianhao" jdbcType="VARCHAR" property="yongHuBianHao"/>
+        <result column="shangjiabianhao" jdbcType="VARCHAR" property="shangJiaBianHao"/>
+        <result column="saomiaoshijian" jdbcType="TIMESTAMP" property="saoMiaoShiJian"/>
+        <result column="kaipiaoshijian" jdbcType="TIMESTAMP" property="kaiPiaoShiJian"/>
+        <result column="xiaopiaobianhao" jdbcType="VARCHAR" property="xiaoPiaoBianHao"/>
+        <result column="shifujine" jdbcType="DECIMAL" property="shiFuJine"/>
+        <result column="zhaopiandizhi" jdbcType="VARCHAR" property="zhaoPianDiZhi"/>
+    </resultMap>
+    <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="com.kaigekeji.zhinengshibie.dao.entity.OsXiaoPiao">
+        <result column="jiexiwenben" jdbcType="LONGVARCHAR" property="jieXiWenBen"/>
+    </resultMap>
+    <sql id="Base_Column_List">
+    bianhao, chepai, yonghubianhao, shangjiabianhao, saomiaoshijian, kaipiaoshijian, 
+    xiaopiaobianhao, shifujine, zhaopiandizhi
+  </sql>
+    <sql id="Blob_Column_List">
+    jiexiwenben
+  </sql>
+    <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="ResultMapWithBLOBs">
+        SELECT
+        <include refid="Base_Column_List"/>
+        ,
+        <include refid="Blob_Column_List"/>
+        FROM os_xiaopiao
+        WHERE bianhao = #{bianHao,jdbcType=VARCHAR}
+    </select>
+
+    <insert id="insertSelective" parameterType="com.kaigekeji.zhinengshibie.dao.entity.OsXiaoPiao">
+        INSERT INTO os_xiaopiao
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="bianHao != null">
+                bianhao,
+            </if>
+            <if test="chePai != null">
+                chepai,
+            </if>
+            <if test="yongHuBianHao != null">
+                yonghubianhao,
+            </if>
+            <if test="shangJiaBianHao != null">
+                shangjiabianhao,
+            </if>
+            <if test="saoMiaoShiJian != null">
+                saomiaoshijian,
+            </if>
+            <if test="kaiPiaoShiJian != null">
+                kaipiaoshijian,
+            </if>
+            <if test="xiaoPiaoBianHao != null">
+                xiaopiaobianhao,
+            </if>
+            <if test="shiFuJine != null">
+                shifujine,
+            </if>
+            <if test="zhaoPianDiZhi != null">
+                zhaopiandizhi,
+            </if>
+            <if test="jieXiWenBen != null">
+                jiexiwenben,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="bianHao != null">
+                #{bianHao,jdbcType=VARCHAR},
+            </if>
+            <if test="chePai != null">
+                #{chePai,jdbcType=VARCHAR},
+            </if>
+            <if test="yongHuBianHao != null">
+                #{yongHuBianHao,jdbcType=VARCHAR},
+            </if>
+            <if test="shangJiaBianHao != null">
+                #{shangJiaBianHao,jdbcType=VARCHAR},
+            </if>
+            <if test="saoMiaoShiJian != null">
+                #{saoMiaoShiJian,jdbcType=TIMESTAMP},
+            </if>
+            <if test="kaiPiaoShiJian != null">
+                #{kaiPiaoShiJian,jdbcType=TIMESTAMP},
+            </if>
+            <if test="xiaoPiaoBianHao != null">
+                #{xiaoPiaoBianHao,jdbcType=VARCHAR},
+            </if>
+            <if test="shiFuJine != null">
+                #{shiFuJine,jdbcType=DECIMAL},
+            </if>
+            <if test="zhaoPianDiZhi != null">
+                #{zhaoPianDiZhi,jdbcType=VARCHAR},
+            </if>
+            <if test="jieXiWenBen != null">
+                #{jieXiWenBen,jdbcType=LONGVARCHAR},
+            </if>
+        </trim>
+    </insert>
+    <update id="updateByPrimaryKeySelective" parameterType="com.kaigekeji.zhinengshibie.dao.entity.OsXiaoPiao">
+        UPDATE os_xiaopiao
+        <set>
+            <if test="chePai != null">
+                chepai = #{chePai,jdbcType=VARCHAR},
+            </if>
+            <if test="yongHuBianHao != null">
+                yonghubianhao = #{yongHuBianHao,jdbcType=VARCHAR},
+            </if>
+            <if test="shangJiaBianHao != null">
+                shangjiabianhao = #{shangJiaBianHao,jdbcType=VARCHAR},
+            </if>
+            <if test="saoMiaoShiJian != null">
+                saomiaoshijian = #{saoMiaoShiJian,jdbcType=TIMESTAMP},
+            </if>
+            <if test="kaiPiaoShiJian != null">
+                kaipiaoshijian = #{kaiPiaoShiJian,jdbcType=TIMESTAMP},
+            </if>
+            <if test="xiaoPiaoBianHao != null">
+                xiaopiaobianhao = #{xiaoPiaoBianHao,jdbcType=VARCHAR},
+            </if>
+            <if test="shiFuJine != null">
+                shifujine = #{shiFuJine,jdbcType=DECIMAL},
+            </if>
+            <if test="zhaoPianDiZhi != null">
+                zhaopiandizhi = #{zhaoPianDiZhi,jdbcType=VARCHAR},
+            </if>
+            <if test="jieXiWenBen != null">
+                jiexiwenben = #{jieXiWenBen,jdbcType=LONGVARCHAR},
+            </if>
+        </set>
+        WHERE bianhao = #{bianHao,jdbcType=VARCHAR}
+    </update>
+
+</mapper>

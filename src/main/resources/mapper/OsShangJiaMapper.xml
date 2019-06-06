@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.kaigekeji.zhinengshibie.dao.OsShangJiaMapper">
+    <resultMap id="BaseResultMap" type="com.kaigekeji.zhinengshibie.dao.entity.OsShangJia">
+        <id column="bianhao" jdbcType="VARCHAR" property="bianHao"/>
+        <result column="mingcheng" jdbcType="VARCHAR" property="mingCheng"/>
+        <result column="jiancheng" jdbcType="VARCHAR" property="jianCheng"/>
+        <result column="jingyingleibie" jdbcType="VARCHAR" property="jingYingLeiBie"/>
+        <result column="tingchechangbianhao" jdbcType="VARCHAR" property="tingCheChangBianHao"/>
+        <result column="dikouxiaoshi" jdbcType="VARCHAR" property="diKouXiaoShi"/>
+    </resultMap>
+    <sql id="Base_Column_List">
+    bianhao, mingcheng, jiancheng, jingyingleibie, tingchechangbianhao, dikouxiaoshi
+  </sql>
+    <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+        SELECT
+        <include refid="Base_Column_List"/>
+        FROM os_shangjia
+        WHERE bianhao = #{bianHao,jdbcType=VARCHAR}
+    </select>
+
+    <insert id="insertSelective" parameterType="com.kaigekeji.zhinengshibie.dao.entity.OsShangJia">
+        INSERT INTO os_shangjia
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="bianHao != null">
+                bianhao,
+            </if>
+            <if test="mingCheng != null">
+                mingcheng,
+            </if>
+            <if test="jianCheng != null">
+                jiancheng,
+            </if>
+            <if test="jingYingLeiBie != null">
+                jingyingleibie,
+            </if>
+            <if test="tingCheChangBianHao != null">
+                tingchechangbianhao,
+            </if>
+            <if test="diKouXiaoShi != null">
+                dikouxiaoshi,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="bianHao != null">
+                #{bianHao,jdbcType=VARCHAR},
+            </if>
+            <if test="mingCheng != null">
+                #{mingCheng,jdbcType=VARCHAR},
+            </if>
+            <if test="jianCheng != null">
+                #{jianCheng,jdbcType=VARCHAR},
+            </if>
+            <if test="jingYingLeiBie != null">
+                #{jingYingLeiBie,jdbcType=VARCHAR},
+            </if>
+            <if test="tingCheChangBianHao != null">
+                #{tingCheChangBianHao,jdbcType=VARCHAR},
+            </if>
+            <if test="diKouXiaoShi != null">
+                #{diKouXiaoShi,jdbcType=VARCHAR},
+            </if>
+        </trim>
+    </insert>
+    <update id="updateByPrimaryKeySelective" parameterType="com.kaigekeji.zhinengshibie.dao.entity.OsShangJia">
+        UPDATE os_shangjia
+        <set>
+            <if test="mingCheng != null">
+                mingcheng = #{mingCheng,jdbcType=VARCHAR},
+            </if>
+            <if test="jianCheng != null">
+                jiancheng = #{jianCheng,jdbcType=VARCHAR},
+            </if>
+            <if test="jingYingLeiBie != null">
+                jingyingleibie = #{jingYingLeiBie,jdbcType=VARCHAR},
+            </if>
+            <if test="tingCheChangBianHao != null">
+                tingchechangbianhao = #{tingCheChangBianHao,jdbcType=VARCHAR},
+            </if>
+            <if test="diKouXiaoShi != null">
+                dikouxiaoshi = #{diKouXiaoShi,jdbcType=VARCHAR},
+            </if>
+        </set>
+        WHERE bianhao = #{bianHao,jdbcType=VARCHAR}
+    </update>
+
+</mapper>

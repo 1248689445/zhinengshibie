@@ -1,0 +1,8 @@
+2019-5-24 18:02:29[DEBUG](Log4jImpl.java:46)Retrieving column information for table "yonghu_xinxi"
+2019-5-24 18:02:30[DEBUG](Log4jImpl.java:46)Found column "bianhao", data type 12, in table "wxkj..yonghu_xinxi"
+2019-5-24 18:02:30[DEBUG](Log4jImpl.java:46)Found column "openid", data type 12, in table "wxkj..yonghu_xinxi"
+2019-5-24 18:02:30[DEBUG](Log4jImpl.java:46)Found column "nicheng", data type 12, in table "wxkj..yonghu_xinxi"
+2019-5-24 18:02:30[DEBUG](Log4jImpl.java:46)Found column "touxiang", data type 12, in table "wxkj..yonghu_xinxi"
+2019-5-24 18:02:30[DEBUG](Log4jImpl.java:46)Found column "zhuceshijian", data type 93, in table "wxkj..yonghu_xinxi"
+2019-5-24 18:02:30[DEBUG](Log4jImpl.java:46)Found column "stats", data type 4, in table "wxkj..yonghu_xinxi"
+2019-5-24 18:02:30[DEBUG](Log4jImpl.java:46)Found column "roleid", data type 4, in table "wxkj..yonghu_xinxi"

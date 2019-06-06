@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.kaigekeji.zhinengshibie.dao.OsTingCheChangMapper">
+    <resultMap id="BaseResultMap" type="com.kaigekeji.zhinengshibie.dao.entity.OsTingCheChang">
+        <id column="bianhao" jdbcType="VARCHAR" property="bianHao"/>
+        <result column="mingcheng" jdbcType="VARCHAR" property="mingCheng"/>
+    </resultMap>
+    <sql id="Base_Column_List">
+    bianhao, mingcheng
+  </sql>
+    <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+        SELECT
+        <include refid="Base_Column_List"/>
+        FROM os_tingchechang
+        WHERE bianhao = #{bianHao,jdbcType=VARCHAR}
+    </select>
+
+    <insert id="insertSelective" parameterType="com.kaigekeji.zhinengshibie.dao.entity.OsTingCheChang">
+        INSERT INTO os_tingchechang
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="bianHao != null">
+                bianhao,
+            </if>
+            <if test="mingCheng != null">
+                mingcheng,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="bianHao != null">
+                #{bianHao,jdbcType=VARCHAR},
+            </if>
+            <if test="mingCheng != null">
+                #{mingCheng,jdbcType=VARCHAR},
+            </if>
+        </trim>
+    </insert>
+    <update id="updateByPrimaryKeySelective" parameterType="com.kaigekeji.zhinengshibie.dao.entity.OsTingCheChang">
+        UPDATE os_tingchechang
+        <set>
+            <if test="mingCheng != null">
+                mingcheng = #{mingCheng,jdbcType=VARCHAR},
+            </if>
+        </set>
+        WHERE bianhao = #{bianHao,jdbcType=VARCHAR}
+    </update>
+
+</mapper>

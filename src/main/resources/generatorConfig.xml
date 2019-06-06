@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration
+  PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+  "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+    <generatorConfiguration>  
+        <!-- 基础包 只用一个 -->  
+        <!-- mysql -->  
+<!--        <classPathEntry location="C:/Program Files/mysql-5.6.24-win32/bin" />  -->
+
+    <context id="DB2Tables" targetRuntime="MyBatis3">
+        <!-- 分页插件 只用一个 -->
+        <!-- mysql -->
+        <!--             <plugin type="yfwApp.test.PaginationPlugin"></plugin>   -->
+        <!-- oracle
+        <plugin type="OraclePaginationPlugin"></plugin>-->
+        <!-- sqlserver
+        <plugin type="SqlServicePaginationPlugin"></plugin>-->
+
+        <!-- 通用 -->
+        <plugin type="org.mybatis.generator.plugins.EqualsHashCodePlugin" />
+        <plugin type="org.mybatis.generator.plugins.SerializablePlugin" />
+        <plugin type="org.mybatis.generator.plugins.CaseInsensitiveLikePlugin" />
+        <!--          <plugin type="org.mybatis.generator.plugins.RenameExampleClassPlugin">
+                     <property name="searchString" value="Example$"/>
+                     <property name="replaceString" value="Criteria"/>
+                 </plugin>   -->
+
+        <commentGenerator>
+            <!-- 不生成注释 -->
+            <property name="suppressAllComments" value="true" />
+        </commentGenerator>
+
+        <!--  配置数据库连接信息 只用一个 -->
+        <!-- mysql -->
+        <jdbcConnection driverClass="com.mysql.jdbc.Driver"
+                        connectionURL="jdbc:mysql://localhost:3306/wxkj"
+                        userId="root" password="123456">
+        </jdbcConnection>
+
+
+
+        <javaTypeResolver>
+            <property name="forceBigDecimals" value="false" />
+        </javaTypeResolver>
+
+
+        <!-- 指定entity生成位置 -->
+        <javaModelGenerator targetPackage="com.kaigekeji.zhinengshibie.dao.entity" targetProject="src\main\java">
+            <property name="enableSubPackages" value="true" />
+            <property name="trimStrings" value="true" />
+        </javaModelGenerator>
+
+        <!-- 指定sql映射文件生成的位置 -->
+        <sqlMapGenerator targetPackage="mapper" targetProject="src\main\resources">
+            <property name="enableSubPackages" value="true" />
+        </sqlMapGenerator>
+
+        <!-- JavaDao层接口(XxxxDao.java)生成配置 targetProject+targetPackage构成全路径 -->
+        <javaClientGenerator  targetPackage="com.kaigekeji.zhinengshibie.dao" targetProject="src\main\java" type="XMLMAPPER">
+            <!--是否允许建立子包（对应MySql的scheme）-->
+            <property name="enableSubPackages" value="true" />
+        </javaClientGenerator>
+
+
+        <!-- 指定每个表的生成策略，enable***表示不生成example表  -->
+<!--        <table tableName="os_shangjia" schema="" domainObjectName="OsShangjia"-->
+<!--                               enableCountByExample="false"  enableUpdateByExample="false"-->
+<!--                               enableDeleteByExample="false"  enableSelectByExample="false" selectByExampleQueryId="false">-->
+<!--    </table>-->
+<!--        <table tableName="os_tingchechang" schema="" domainObjectName="OsTingchechang"-->
+<!--               enableCountByExample="false"  enableUpdateByExample="false"-->
+<!--               enableDeleteByExample="false"  enableSelectByExample="false" selectByExampleQueryId="false">-->
+<!--        </table>-->
+<!--        <table tableName="os_xiaopiao" schema="" domainObjectName="OsXiaopiao"-->
+<!--               enableCountByExample="false"  enableUpdateByExample="false"-->
+<!--               enableDeleteByExample="false"  enableSelectByExample="false" selectByExampleQueryId="false">-->
+<!--        </table>-->
+<!--        <table tableName="os_xitongcanshu" schema="" domainObjectName="OsXitongcanshu"-->
+<!--               enableCountByExample="false"  enableUpdateByExample="false"-->
+<!--               enableDeleteByExample="false"  enableSelectByExample="false" selectByExampleQueryId="false">-->
+<!--        </table>-->
+        <table tableName="yonghu_xinxi" schema="" domainObjectName="YonghuXinxi"
+               enableCountByExample="false"  enableUpdateByExample="false"
+               enableDeleteByExample="false"  enableSelectByExample="false" selectByExampleQueryId="false">
+        </table>
+
+<!--        <table tableName="os_guanliyuan" schema="" domainObjectName="OsGuanliyuan"-->
+<!--               enableCountByExample="false"  enableUpdateByExample="false"-->
+<!--               enableDeleteByExample="false"  enableSelectByExample="false" selectByExampleQueryId="false">-->
+<!--        </table>-->
+
+
+<!--      <table tableName="kg_business" schema="" domainObjectName="Business"-->
+<!--              enableCountByExample="false"  enableUpdateByExample="false"-->
+<!--              enableDeleteByExample="false"  enableSelectByExample="false" selectByExampleQueryId="false">-->
+<!--        </table>-->
+
+
+    </context>
+
+</generatorConfiguration>

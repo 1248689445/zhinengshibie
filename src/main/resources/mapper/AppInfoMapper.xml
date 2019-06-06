@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.kaigekeji.zhinengshibie.dao.AppInfoMapper">
+
+	<resultMap id="BaseResultMap" type="com.kaigekeji.zhinengshibie.dao.entity.AppInfo">
+		<id column="serialkey" property="serialkey" jdbcType="INTEGER" />
+		<result column="appid" property="appid" jdbcType="VARCHAR" />
+		<result column="secret" property="secret" jdbcType="VARCHAR" />
+		<result column="token" property="token" jdbcType="VARCHAR" />
+		<result column="sign" property="sign" jdbcType="VARCHAR" />
+		<result column="templateid" property="templateid" jdbcType="VARCHAR" />
+	</resultMap>
+ 
+
+
+	<sql id="Base_Column_List">
+		serialkey, appid, secret, token, sign, templateid
+	</sql>
+
+	<!-- 查找应用程序信息 -->
+	<select id="selectByAll" resultMap="BaseResultMap">
+		select <include refid="Base_Column_List" />
+		from appInfo
+	</select>
+
+	<!-- 查询应用程序信息 -->
+	<select id="selectBySign" resultMap="BaseResultMap" parameterType="com.kaigekeji.zhinengshibie.dao.entity.AppInfo">
+		select <include refid="Base_Column_List" />
+		from appInfo
+		where sign = #{sign,jdbcType=VARCHAR}
+	</select>
+	
+	<!-- 更新应用程序信息 -->
+	<update id="updateBySign" parameterType="com.kaigekeji.zhinengshibie.dao.entity.AppInfo">
+		update appInfo
+		set appid = #{appid,jdbcType=VARCHAR},
+		secret = #{secret,jdbcType=VARCHAR},
+		token = #{token,jdbcType=VARCHAR},
+		templateid = #{templateid,jdbcType=VARCHAR}
+		where sign = #{sign,jdbcType=VARCHAR}
+	</update>
+	
+</mapper>
